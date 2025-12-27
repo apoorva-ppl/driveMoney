@@ -2,8 +2,7 @@ import { motion } from "framer-motion"
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-50 text-black dark:bg-black dark:text-white
-">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-50 text-black dark:bg-black dark:text-white">
 
       {/* Glow blobs */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600 rounded-full blur-[120px] opacity-40 animate-pulse" />

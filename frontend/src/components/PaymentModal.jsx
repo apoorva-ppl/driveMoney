@@ -12,7 +12,7 @@ function PaymentModal({ isOpen, onClose, bike }) {
   const serviceFee = Math.round(subtotal * 0.05)
   const total = subtotal + serviceFee
 
-  /* 🔑 ESC KEY CLOSE — INSIDE COMPONENT */
+  /*  ESC KEY CLOSE — INSIDE COMPONENT */
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
