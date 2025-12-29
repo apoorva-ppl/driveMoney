@@ -1,0 +1,160 @@
+import { useEffect, useState } from "react";
+import api from "../api/axios";
+import LogoutButton from "../components/LogoutButton";
+import { exportToCSV } from "../utils/exportCSV";
+
+// Chart imports
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+// Export utils
+import { exportToCSV } from "../utils/exportCSV";
+import { exportToPDF } from "../utils/exportPDF";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend
+);
+
+export default function AdminDashboard() {
+  const [stats, setStats] = useState(null);
+  const [transactions, setTransactions] = useState([]);
+
+  // Fetch dashboard stats
+  const fetchStats = async () => {
+    const res = await api.get("/admin/stats");
+    setStats(res.data);
+  };
+
+  // Fetch all transactions
+  const fetchTransactions = async () => {
+    const res = await api.get("/transactions/all");
+    setTransactions(res.data);
+  };
+
+  useEffect(() => {
+    fetchStats();
+    fetchTransactions();
+  }, []);
+
+  // Delete transaction (ADMIN)
+  const deleteTransaction = async (id) => {
+    if (!window.confirm("Delete this transaction?")) return;
+    await api.delete(`/transactions/${id}`);
+    fetchTransactions();
+  };
+
+  // Chart data
+  const chartData = {
+    labels: transactions.map(
+      (t) => t.user?.email || "Unknown"
+    ),
+    datasets: [
+      {
+        label: "Earnings",
+        data: transactions.map((t) => t.amount),
+        backgroundColor: "rgba(99, 102, 241, 0.7)",
+      },
+    ],
+  };
+
+  if (!stats) return <p>Loading admin dashboard...</p>;
+
+  return (
+    <div className="p-6 text-white">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold">Admin Dashboard</h2>
+        <LogoutButton />
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="bg-slate-800 p-4 rounded">
+          <p>Total Users</p>
+          <h3 className="text-2xl">{stats.totalUsers}</h3>
+        </div>
+        <div className="bg-slate-800 p-4 rounded">
+          <p>Admins</p>
+          <h3 className="text-2xl">{stats.admins}</h3>
+        </div>
+        <div className="bg-slate-800 p-4 rounded">
+          <p>Users</p>
+          <h3 className="text-2xl">{stats.users}</h3>
+        </div>
+      </div>
+
+      {/* Chart */}
+      <div className="bg-white p-4 rounded mb-6 text-black">
+        <h3 className="mb-2 font-semibold">Earnings Overview</h3>
+        <Bar data={chartData} />
+      </div>
+
+      {/* Export buttons */}
+      <div className="flex gap-4 mb-4">
+        <button
+          onClick={() => exportToCSV(transactions)}
+          className="bg-blue-500 px-4 py-2 rounded"
+        >
+          Export CSV
+        </button>
+        <button
+          onClick={() => exportToPDF(transactions)}
+          className="bg-green-500 px-4 py-2 rounded"
+        >
+          Export PDF
+        </button>
+      </div>
+
+      {/* Transactions Table */}
+      <div className="bg-slate-900 p-4 rounded">
+        <h3 className="text-xl mb-4">All Transactions</h3>
+
+        {transactions.map((t) => (
+          <div
+            key={t._id}
+            className="flex justify-between items-center border-b border-gray-600 py-2"
+          >
+            <div>
+              <p className="text-sm">
+                <span className="font-semibold">User:</span>{" "}
+                {t.user?.email}
+              </p>
+              <p className="text-sm">
+                {t.source} — ₹{t.amount}
+              </p>
+            </div>
+
+            <button
+              onClick={() => deleteTransaction(t._id)}
+              className="bg-red-500 px-3 py-1 rounded"
+            >
+              Delete
+            </button>
+            <button
+  onClick={() => exportToCSV(transactions)}
+  className="bg-blue-500 px-4 py-2 rounded"
+>
+  Export CSV
+</button>
+<button onClick={() => exportToPDF(transactions)}>
+  Export PDF
+</button>
+
+          </div>
+        ))}
+      </div>
+    </div>
+    
+  );
+}

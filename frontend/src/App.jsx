@@ -5,6 +5,9 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import BikeDetails from "./pages/BikeDetails"
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminUsers from "./pages/AdminUsers";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
   return (
@@ -17,6 +20,23 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/bike/:id" element={<BikeDetails />} />
+          <Route
+  path="/admin/dashboard"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/users"
+  element={
+    <AdminRoute>
+      <AdminUsers />
+    </AdminRoute>
+  }
+/>
 
         </Routes>
 
