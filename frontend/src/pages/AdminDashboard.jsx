@@ -13,9 +13,9 @@ import {
   Legend,
 } from "chart.js";
 
-// Export utils
-import { exportToCSV } from "../utils/exportCSV";
-import { exportToPDF } from "../utils/exportPDF";
+// Export utils (ALIASED)
+import { exportToCSV as exportCSVUtil } from "../utils/exportCSV";
+import { exportToPDF as exportPDFUtil } from "../utils/exportPDF";
 
 ChartJS.register(
   CategoryScale,
@@ -29,13 +29,11 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
-  // Fetch dashboard stats
   const fetchStats = async () => {
     const res = await api.get("/admin/stats");
     setStats(res.data);
   };
 
-  // Fetch all transactions
   const fetchTransactions = async () => {
     const res = await api.get("/transactions/all");
     setTransactions(res.data);
@@ -46,18 +44,14 @@ export default function AdminDashboard() {
     fetchTransactions();
   }, []);
 
-  // Delete transaction (ADMIN)
   const deleteTransaction = async (id) => {
     if (!window.confirm("Delete this transaction?")) return;
     await api.delete(`/transactions/${id}`);
     fetchTransactions();
   };
 
-  // Chart data
   const chartData = {
-    labels: transactions.map(
-      (t) => t.user?.email || "Unknown"
-    ),
+    labels: transactions.map((t) => t.user?.email || "Unknown"),
     datasets: [
       {
         label: "Earnings",
@@ -102,13 +96,13 @@ export default function AdminDashboard() {
       {/* Export buttons */}
       <div className="flex gap-4 mb-4">
         <button
-          onClick={() => exportToCSV(transactions)}
+          onClick={() => exportCSVUtil(transactions)}
           className="bg-blue-500 px-4 py-2 rounded"
         >
           Export CSV
         </button>
         <button
-          onClick={() => exportToPDF(transactions)}
+          onClick={() => exportPDFUtil(transactions)}
           className="bg-green-500 px-4 py-2 rounded"
         >
           Export PDF
@@ -140,20 +134,9 @@ export default function AdminDashboard() {
             >
               Delete
             </button>
-            <button
-  onClick={() => exportToCSV(transactions)}
-  className="bg-blue-500 px-4 py-2 rounded"
->
-  Export CSV
-</button>
-<button onClick={() => exportToPDF(transactions)}>
-  Export PDF
-</button>
-
           </div>
         ))}
       </div>
     </div>
-    
   );
 }
