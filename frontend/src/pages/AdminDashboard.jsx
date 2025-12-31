@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import LogoutButton from "../components/LogoutButton";
-import { exportToCSV } from "../utils/exportCSV";
 
 // Chart imports
 import { Bar } from "react-chartjs-2";
