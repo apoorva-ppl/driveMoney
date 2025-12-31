@@ -13,10 +13,6 @@ import {
   Legend,
 } from "chart.js";
 
-// Export utils (ALIASED)
-import { exportToCSV as exportCSVUtil } from "../utils/exportCSV";
-import { exportToPDF as exportPDFUtil } from "../utils/exportPDF";
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -93,23 +89,7 @@ export default function AdminDashboard() {
         <Bar data={chartData} />
       </div>
 
-      {/* Export buttons */}
-      <div className="flex gap-4 mb-4">
-        <button
-          onClick={() => exportCSVUtil(transactions)}
-          className="bg-blue-500 px-4 py-2 rounded"
-        >
-          Export CSV
-        </button>
-        <button
-          onClick={() => exportPDFUtil(transactions)}
-          className="bg-green-500 px-4 py-2 rounded"
-        >
-          Export PDF
-        </button>
-      </div>
-
-      {/* Transactions Table */}
+      {/* Transactions */}
       <div className="bg-slate-900 p-4 rounded">
         <h3 className="text-xl mb-4">All Transactions</h3>
 
@@ -140,3 +120,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
