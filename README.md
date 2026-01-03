@@ -74,6 +74,12 @@ The project focuses on practical full-stack development concepts such as authent
 ### Book Bike
 <img src="https://github.com/user-attachments/assets/d819377f-7353-484d-aba7-b43e815b4587" width="100%" />
 
+##Light Mode toggle feature
+![Home Page](## Light Mode Toggle Feature
+
+<img src="https://github.com/user-attachments/assets/f4d055df-e9f0-4392-81aa-8756de9cefaf" width="100%" alt="Light Mode Toggle Feature" />
+)
+
 
 ---
 
