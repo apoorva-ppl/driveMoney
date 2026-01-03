@@ -60,21 +60,20 @@ The project focuses on practical full-stack development concepts such as authent
 
 ## Screenshots
 
-Home Page  
-![Home Page](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 36 29 PM" src="https://github.com/user-attachments/assets/8997ae4a-36ea-4a56-acde-a939caa6c68c" />
-)
+## Screenshots
 
-Login Page  
-![Login Page](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 36 39 PM" src="https://github.com/user-attachments/assets/90af120b-b22b-4012-99f0-4c21a5efc127" />
-)
+### Home Page
+<img src="https://github.com/user-attachments/assets/8997ae4a-36ea-4a56-acde-a939caa6c68c" width="100%" />
 
-Dashboard  
-![Dashboard](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 37 18 PM" src="https://github.com/user-attachments/assets/83e957b3-8ac3-45bc-9c82-088d6b59cdc5" />
-)
+### Login Page
+<img src="https://github.com/user-attachments/assets/90af120b-b22b-4012-99f0-4c21a5efc127" width="100%" />
 
-Book Bike  
-![Book Bike](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 38 22 PM" src="https://github.com/user-attachments/assets/d819377f-7353-484d-aba7-b43e815b4587" />
-)
+### Dashboard
+<img src="https://github.com/user-attachments/assets/83e957b3-8ac3-45bc-9c82-088d6b59cdc5" width="100%" />
+
+### Book Bike
+<img src="https://github.com/user-attachments/assets/d819377f-7353-484d-aba7-b43e815b4587" width="100%" />
+
 
 ---
 
