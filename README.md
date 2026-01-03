@@ -83,24 +83,7 @@ Demo video will be added soon.
 
 ---
 
-## How to Run the Project Locally
-
-### Clone the repository
-```bash
-git clone https://github.com/apoorva-ppl/driveMoney.git
-cd driveMoney
-
-#Frontend setup 
-cd frontend
-npm install
-npm run dev
-
-
-#Backend Setup
-cd backend
-npm install
-npm start
-Author
+## Author
 
 Apoorva Pandey
 GitHub: https://github.com/apoorva-ppl
