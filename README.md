@@ -1,0 +1,108 @@
+# DriveMoney – Bike Rental & Earnings Platform
+
+DriveMoney is a full-stack web application that allows users to book bikes, manage transactions, and track earnings through a simple and user-friendly interface.
+
+The project is built using the MERN stack and deployed using modern cloud platforms.
+
+---
+
+## Live Project Links
+
+Frontend (Vercel):  
+https://drive-money-or23.vercel.app/
+
+Backend (Render):  
+https://drivemoney.onrender.com
+
+---
+
+## About the Project
+
+DriveMoney provides a digital platform for bike booking and expense or earning management.  
+Users can sign up, log in, book bikes, and view transaction details on a dashboard.
+
+The project focuses on practical full-stack development concepts such as authentication, API integration, database management, and cloud deployment.
+
+---
+
+## Features
+
+- User authentication (Signup and Login)
+- Bike booking functionality
+- User dashboard
+- Transaction management
+- Secure backend APIs
+- Responsive user interface
+- Cloud-based deployment
+
+---
+
+## Tech Stack Used
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- Axios
+- React Router
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- JWT Authentication
+- Cookie Parser
+
+### Deployment
+- Vercel (Frontend)
+- Render (Backend)
+
+---
+
+## Screenshots
+
+Home Page  
+![Home Page](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 36 29 PM" src="https://github.com/user-attachments/assets/8997ae4a-36ea-4a56-acde-a939caa6c68c" />
+)
+
+Login Page  
+![Login Page](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 36 39 PM" src="https://github.com/user-attachments/assets/90af120b-b22b-4012-99f0-4c21a5efc127" />
+)
+
+Dashboard  
+![Dashboard](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 37 18 PM" src="https://github.com/user-attachments/assets/83e957b3-8ac3-45bc-9c82-088d6b59cdc5" />
+)
+
+Book Bike  
+![Book Bike](<img width="1469" height="884" alt="Screenshot 2026-01-03 at 4 38 22 PM" src="https://github.com/user-attachments/assets/d819377f-7353-484d-aba7-b43e815b4587" />
+)
+
+---
+
+## Demo Video
+
+Demo video will be added soon.
+
+---
+
+## How to Run the Project Locally
+
+### Clone the repository
+```bash
+git clone https://github.com/apoorva-ppl/driveMoney.git
+cd driveMoney
+
+#Frontend setup 
+cd frontend
+npm install
+npm run dev
+
+
+#Backend Setup
+cd backend
+npm install
+npm start
+Author
+
+Apoorva Pandey
+GitHub: https://github.com/apoorva-ppl
+
