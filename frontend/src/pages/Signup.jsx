@@ -1,33 +1,26 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import AuthLayout from "../auth/AuthLayout";
 import Input from "../auth/Input";
 
 function Signup() {
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignup = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 🔥 THIS IS CRITICAL
 
     try {
-      const res = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/api/auth/register`,
-        formData,
-        { withCredentials: true }
+        { name, email, password }
       );
 
-      if (res.status === 201 || res.status === 200) {
-        navigate("/login");
-      }
-    } catch (error) {
-      alert(error.response?.data?.message || "Signup failed");
+      alert("Signup successful! Please login.");
+    } catch (err) {
+      alert("Signup failed");
     }
   };
 
@@ -37,33 +30,27 @@ function Signup() {
         <Input
           type="text"
           placeholder="Full Name"
-          value={formData.name}
-          onChange={(e) =>
-            setFormData({ ...formData, name: e.target.value })
-          }
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <Input
           type="email"
           placeholder="Email"
-          value={formData.email}
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <Input
           type="password"
           placeholder="Password"
-          value={formData.password}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <button
           type="submit"
-          className="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 font-semibold hover:scale-[1.02] transition"
+          className="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 font-semibold"
         >
           Sign Up
         </button>
@@ -80,5 +67,6 @@ function Signup() {
 }
 
 export default Signup;
+
 
 
