@@ -48,12 +48,14 @@ function Signup() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button
-          type="submit"
-          className="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 font-semibold"
-        >
-          Sign Up
-        </button>
+       <button
+  type="button"
+  onClick={() => alert("BUTTON CLICKED")}
+  className="w-full mt-4 py-3 rounded-xl bg-red-500 text-white"
+>
+  Sign Up
+</button>
+
       </form>
 
       <p className="mt-6 text-center text-gray-400 text-sm">
